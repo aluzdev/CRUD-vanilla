@@ -31,6 +31,7 @@ form.addEventListener("submit", (event) => {
   console.log(songData);
 
   postSong(songData);
+  loadSongs();
 
   form.reset();
 });
@@ -38,6 +39,7 @@ form.addEventListener("submit", (event) => {
 const loadSongs = async () => {
   const songs = await getSongs();
   const songsArray = Object.values(songs);
+  songsList.innerHTML = "";
 
   if (songsArray) {
     songsArray.forEach((song) => addSongToList(song));
