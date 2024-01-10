@@ -702,6 +702,10 @@ video {
   max-width: 24rem;
 }
 
+.max-w-\[150px\] {
+  max-width: 150px;
+}
+
 .items-start {
   align-items: flex-start;
 }
