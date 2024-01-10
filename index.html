@@ -1,28 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="./src/input.css">
+    <link rel="stylesheet" href="./src/input.css" />
     <script type="text/javascript" src="/src/main.js"></script>
-    <link href="/src/output.css" rel="stylesheet">
-</head>
-<body class="flex gap-4">
-    <form class="text-red-950">
-        <label class="">
-            author: 
-            <input type="text" name="author">
-        </label>
-        <label >
-            song name: 
-            <input type="text" name="songName">
-        </label>
-        <label >
-            band name: 
-            <input type="text" name="bandName">
-        </label>
+    <link href="/src/output.css" rel="stylesheet" />
+  </head>
+  <body class="flex gap-20 justify-center items-start bg-[#111827] mt-8">
+    <form class="max-w-sm">
+      <div class="mb-5">
+        <label
+          for="name"
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >Tu nombre</label
+        >
+        <input
+          type="text"
+          id="name"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          placeholder="name@flowbite.com"
+          required
+        />
+      </div>
+      <div class="mb-5">
+        <label
+          for="songName"
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >Nombre de la canción</label
+        >
+        <input
+          type="text"
+          id="songName"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          required
+        />
+      </div>
+      <div class="mb-5">
+        <label
+          for="intérprete"
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+        >
+          intérprete</label
+        >
+        <input
+          type="text"
+          id="intérprete"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          placeholder="name@flowbite.com"
+          required
+        />
+      </div>
+      <button class="btn-primary">Submit</button>
     </form>
-    <p class="text-emerald-900">ola</p>
-</body>
+
+    <div class="">
+      <h1 class="text-white font-bold">Lista de canciones</h1>
+      <ul>
+        <li class="flex gap-4 text-white">
+          <p class="max-w-[100px]">creada por: user</p>
+          <p class="max-w-[100px]">nombre de la rola</p>
+          <p class="max-w-[100px]">interprete</p>
+          <button class="btn-primary">Agregar a favoritos</button>
+          <button class="btn-danger">Eliminar</button>
+        </li>
+      </ul>
+    </div>
+  </body>
 </html>
