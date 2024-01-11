@@ -20,7 +20,14 @@ const getSongs = async () => {
   return data;
 };
 
-form.addEventListener("submit", (event) => {
+const deleteSong = async (key) => {
+  console.log(`deleting song ${key}`);
+  const url = `https://javascript30g-default-rtdb.asia-southeast1.firebasedatabase.app/songList/${key}/.json`;
+
+  const response = await fetch(url, { method: "DELETE" });
+};
+
+form.addEventListener("submit", async (event) => {
   event.preventDefault(); // Prevent the default form submission behavior
 
   // Get the values from the form inputs
@@ -30,7 +37,7 @@ form.addEventListener("submit", (event) => {
   const songData = { user, title, author };
   console.log(songData);
 
-  postSong(songData);
+  await postSong(songData);
   loadSongs();
 
   form.reset();
@@ -38,7 +45,8 @@ form.addEventListener("submit", (event) => {
 
 const loadSongs = async () => {
   const songs = await getSongs();
-  const songsArray = Object.values(songs);
+  const songsArray = Object.keys(songs).map((key) => ({ ...songs[key], key }));
+  console.log(songsArray);
   songsList.innerHTML = "";
 
   if (songsArray) {
@@ -46,7 +54,7 @@ const loadSongs = async () => {
   }
 };
 
-const addSongToList = ({ author, title, user }) => {
+const addSongToList = ({ author, title, user, key }) => {
   let songLi = document.createElement("li");
   let userP = document.createElement("p");
   let songNameP = document.createElement("p");
@@ -59,11 +67,16 @@ const addSongToList = ({ author, title, user }) => {
   bandNameP.classList.add("min-w-[70px]", "text-center", "max-w-[70px]");
 
   let favoriteButton = document.createElement("button");
-  let deleteButton = document.createElement("button");
   favoriteButton.classList.add("btn-primary");
-  deleteButton.classList.add("btn-danger");
   favoriteButton.innerText = "Agregar a favoritos";
+
+  let deleteButton = document.createElement("button");
+  deleteButton.classList.add("btn-danger");
   deleteButton.innerText = "Eliminar";
+  deleteButton.addEventListener("click", async () => {
+    await deleteSong(key);
+    loadSongs();
+  });
 
   songLi.classList.add(
     "flex",
